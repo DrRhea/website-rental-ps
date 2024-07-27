@@ -8,17 +8,34 @@
   <title>Document</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+git<body>
   <div class="bg-gray-100 w-screen h-screen flex justify-center items-center">
     <div class="bg-white rounded-lg shadow w-96 h-fit p-8">
       <h1 class="text-center mb-4 font-bold text-lg">Daftar Member</h1>
-      <form action="" class="grid grid-cols-3 gap-4">
+      <form action="/member/daftar" class="grid grid-cols-3 gap-4" method="POST">
+        @csrf
+
           <label>Nama : </label>
-          <input type="text" class="border border-indigo-600 col-span-2">
+          <input type="text" class="border border-indigo-600 col-span-2" name="nama_member">
+          @error('nama_member')
+          <p class="col-span-3 text-red-500">
+            {{ $message }}
+          </p>
+          @enderror
           <label>No Telf :</label>
-          <input type="text" class="border border-indigo-600 col-span-2">
+          <input type="text" class="border border-indigo-600 col-span-2" name="no_hp_member">
+          @error('no_hp_member')
+          <p class="col-span-3 text-red-500">
+            {{ $message }}
+          </p>
+          @enderror
           <label>Email :</label>
-          <input type="email" class="border border-indigo-600 col-span-2">
+          <input type="email" class="border border-indigo-600 col-span-2" name="email_member">
+          @error('email_member')
+          <p class="col-span-3 text-red-500">
+            {{ $message }}
+          </p>
+          @enderror
 
         <button type="submit" class="col-span-3 bg-indigo-600 text-white py-2 rounded-lg">Simpan</button>
       </form>
